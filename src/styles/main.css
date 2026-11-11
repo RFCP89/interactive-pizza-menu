@@ -1,0 +1,18 @@
+:root {
+  --color-bg: #fffaf3;
+  --color-text: #2b1d14;
+  --color-focus: #b3261e;
+  font-family: system-ui, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
