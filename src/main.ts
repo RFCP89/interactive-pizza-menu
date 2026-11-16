@@ -3,13 +3,17 @@ import { createPizza } from './scene/pizza';
 import { createStage } from './scene/scene';
 import { createOrderStore, type OrderStore } from './state/order';
 import { connectAnnouncer } from './ui/announcer';
-import { renderPanel } from './ui/panel';
-import { renderSummary } from './ui/summary';
+import { renderSummary, renderTotal } from './ui/summary';
+import { renderShelf } from './ui/tray';
 
 const store = createOrderStore();
 
-renderPanel(requireElement('choices'), store);
+renderShelf(requireElement('shelf-sauce'), 'sauce', store);
+renderShelf(requireElement('shelf-topping'), 'topping', store);
+renderShelf(requireElement('shelf-dough'), 'dough', store);
+renderShelf(requireElement('shelf-cheese'), 'cheese', store);
 renderSummary(requireElement('summary'), store);
+renderTotal(requireElement('bar-total'), store);
 connectAnnouncer(requireElement('announcer'), store);
 startScene(requireElement('stage'), store);
 

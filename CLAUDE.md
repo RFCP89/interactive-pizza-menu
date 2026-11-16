@@ -2,6 +2,8 @@
 
 Site interativo para montar uma pizza. O utilizador escolhe a massa, o molho, o queijo e os ingredientes, vê a pizza a montar-se em 3D à sua frente e, no fim, preenche um pequeno formulário de pedido.
 
+A página é uma bancada de pizzaria num só ecrã: os ingredientes aparecem como imagens em prateleiras à volta da pizza 3D (ingredientes à esquerda, molhos em cima, massa e queijo à direita) e o utilizador **arrasta-os para a pizza**. O carrinho (só esta pizza) e o total atualizam-se sozinhos.
+
 Inspiração: um site de hambúrgueres em que se clica nos ingredientes e o hambúrguer vai ganhando camadas, com um cartão de pedido no fim ("Good food. Coming your way.").
 
 ## Estado atual
@@ -35,7 +37,7 @@ Antes de dar uma tarefa por terminada, corre `npm run build` e `npm run test`. O
 src/
   main.ts              # arranque: liga o estado, a cena e a interface
   data/
-    catalog.ts         # massas, molhos, queijos, ingredientes (id, nome, preço, cor, modelo)
+    catalog.ts         # massas, molhos, queijos, ingredientes (id, nome, preço, cor, imagem, modelo)
   state/
     order.ts           # estado do pedido + cálculo do preço (sem Three.js)
     order.test.ts
@@ -45,7 +47,7 @@ src/
     toppings.ts        # colocar e retirar ingredientes na pizza
     animations.ts      # queda e entrada dos ingredientes
   ui/
-    panel.ts           # lista de escolhas e botões
+    tray.ts            # prateleiras com as imagens dos ingredientes (cada uma é um <button>)
     summary.ts         # resumo do pedido e total
     announcer.ts       # frases para a região aria-live (ex.: "Ingrediente adicionado: …")
     form.ts            # formulário final e confirmação
@@ -67,8 +69,8 @@ public/
 
 A acessibilidade é a base do projeto, não um extra. O 3D é decoração: tudo tem de funcionar sem ele.
 
-- Todas as escolhas são feitas com **elementos HTML reais** (`<button>`, `<input type="radio">`, `<input type="checkbox">`), nunca clicando diretamente no canvas.
-- Arrastar ingredientes para a pizza (drag-and-drop) pode vir mais tarde como extra, por cima dos botões, nunca em substituição deles.
+- Cada imagem de ingrediente é um **`<button>` real**. Arrastar para a pizza é a forma principal, mas clicar, tocar ou carregar em Enter/Espaço faz o mesmo. Nunca se escolhe nada só pelo canvas.
+- As imagens em `public/images/ingredients/` são provisórias (SVG); podem ser trocadas por PNG mudando o campo `image` em `data/catalog.ts`.
 - O `<canvas>` tem `aria-hidden="true"`. Ao lado existe um resumo em texto com o que está na pizza.
 - Quando se adiciona ou retira um ingrediente, anuncia-se numa região `aria-live="polite"` (ex.: "Cogumelos adicionados. Total: 11,50 €").
 - Tudo funciona só com teclado, com foco visível em todos os elementos.

@@ -15,20 +15,20 @@ import {
 
 const testMenu: Catalog = {
   doughs: [
-    { id: 'd1', name: 'Massa 1', priceCents: 700, color: '#000' },
-    { id: 'd2', name: 'Massa 2', priceCents: 750, color: '#000' },
+    { id: 'd1', name: 'Massa 1', priceCents: 700, color: '#000', image: '' },
+    { id: 'd2', name: 'Massa 2', priceCents: 750, color: '#000', image: '' },
   ],
   sauces: [
-    { id: 's1', name: 'Molho 1', priceCents: 0, color: '#000' },
-    { id: 's2', name: 'Molho 2', priceCents: 50, color: '#000' },
+    { id: 's1', name: 'Molho 1', priceCents: 0, color: '#000', image: '' },
+    { id: 's2', name: 'Molho 2', priceCents: 50, color: '#000', image: '' },
   ],
   cheeses: [
-    { id: 'c1', name: 'Queijo 1', priceCents: 0, color: '#000' },
-    { id: 'c2', name: 'Queijo 2', priceCents: 120, color: '#000' },
+    { id: 'c1', name: 'Queijo 1', priceCents: 0, color: '#000', image: '' },
+    { id: 'c2', name: 'Queijo 2', priceCents: 120, color: '#000', image: '' },
   ],
   toppings: [
-    { id: 't1', name: 'Ingrediente 1', priceCents: 150, color: '#000' },
-    { id: 't2', name: 'Ingrediente 2', priceCents: 80, color: '#000' },
+    { id: 't1', name: 'Ingrediente 1', priceCents: 150, color: '#000', image: '' },
+    { id: 't2', name: 'Ingrediente 2', priceCents: 80, color: '#000', image: '' },
   ],
 };
 

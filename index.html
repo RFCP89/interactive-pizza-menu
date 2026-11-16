@@ -7,20 +7,27 @@
     <title>Monte a sua pizza</title>
   </head>
   <body>
-    <main class="layout">
-      <header class="intro">
+    <main class="counter">
+      <header class="topbar">
         <h1>Monte a sua pizza</h1>
-        <p>Escolha a massa, o molho, o queijo e os ingredientes.</p>
+        <p class="topbar-tagline">Toque nos ingredientes para os pôr na pizza.</p>
       </header>
 
-      <div class="preview">
-        <div id="stage" class="stage"></div>
-        <section id="summary" class="summary" aria-labelledby="summary-title"></section>
+      <section id="shelf-sauce" class="shelf shelf--sauce"></section>
+      <section id="shelf-topping" class="shelf shelf--topping"></section>
+
+      <div id="stage" class="stage"></div>
+
+      <div class="side">
+        <section id="shelf-dough" class="shelf shelf--dough"></section>
+        <section id="shelf-cheese" class="shelf shelf--cheese"></section>
+        <section id="summary" class="cart" aria-labelledby="summary-title"></section>
       </div>
 
-      <div id="choices" class="choices"></div>
-
-      <p id="announcer" class="visually-hidden" aria-live="polite"></p>
+      <footer class="bar">
+        <p id="announcer" class="bar-status" aria-live="polite">Escolha a massa, o molho, o queijo e até 6 ingredientes.</p>
+        <p class="bar-total">Total <strong id="bar-total"></strong></p>
+      </footer>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
