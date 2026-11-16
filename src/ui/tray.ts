@@ -1,3 +1,4 @@
+import { assetUrl } from '../data/asset-url';
 import { catalog, MAX_TOPPINGS, type CatalogItem } from '../data/catalog';
 import {
   addTopping,
@@ -113,7 +114,7 @@ function isChosen(order: Order, kind: ShelfKind, id: string): boolean {
 function tileHtml(kind: ShelfKind, item: CatalogItem): string {
   return `<li>
     <button type="button" class="tile" data-kind="${kind}" data-id="${item.id}" aria-pressed="false">
-      <img class="tile-image" src="${item.image}" alt="" draggable="false" />
+      <img class="tile-image" src="${assetUrl(item.image)}" alt="" draggable="false" />
       <span class="tile-label">
         <span class="tile-name">${item.name}</span>
         <span class="tile-price">${priceLabel(kind, item)}</span>

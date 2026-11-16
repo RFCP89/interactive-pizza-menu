@@ -1,4 +1,5 @@
 import './styles/main.css';
+import { assetUrl } from './data/asset-url';
 import { createPizza } from './scene/pizza';
 import { createStage } from './scene/scene';
 import { createToppings } from './scene/toppings';
@@ -52,7 +53,7 @@ function startScene(container: HTMLElement, orderStore: OrderStore): void {
 
 function showStaticPizza(container: HTMLElement): void {
   const image = document.createElement('img');
-  image.src = '/pizza-static.svg';
+  image.src = assetUrl('pizza-static.svg');
   // Decorative: the text summary already describes the pizza.
   image.alt = '';
   image.className = 'stage-fallback';

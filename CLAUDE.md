@@ -70,7 +70,7 @@ public/
 A acessibilidade é a base do projeto, não um extra. O 3D é decoração: tudo tem de funcionar sem ele.
 
 - Cada imagem de ingrediente é um **`<button>` real**. Arrastar para a pizza é a forma principal, mas clicar, tocar ou carregar em Enter/Espaço faz o mesmo. Nunca se escolhe nada só pelo canvas.
-- As imagens em `public/images/ingredients/` são provisórias (SVG); podem ser trocadas por PNG mudando o campo `image` em `data/catalog.ts`.
+- As imagens em `public/images/ingredients/` são provisórias (SVG); podem ser trocadas por PNG mudando o campo `image` em `data/catalog.ts` (caminho dentro de `public/`, sem `/` no início).
 - O `<canvas>` tem `aria-hidden="true"`. Ao lado existe um resumo em texto com o que está na pizza.
 - Quando se adiciona ou retira um ingrediente, anuncia-se numa região `aria-live="polite"` (ex.: "Cogumelos adicionados. Total: 11,50 €").
 - Tudo funciona só com teclado, com foco visível em todos os elementos.
@@ -89,6 +89,11 @@ A acessibilidade é a base do projeto, não um extra. O 3D é decoração: tudo 
 - Libertar a memória (`dispose()`) das geometrias e materiais que se retiram.
 - Modelos `.glb` com compressão (Draco ou meshopt) e, idealmente, menos de 500 KB cada.
 - O ciclo de animação para quando o separador não está visível.
+
+## Publicação
+
+- O site é publicado no GitHub Pages em https://rfcp89.github.io/interactive-pizza-menu/ pelo workflow `.github/workflows/deploy.yml`, a cada push para `main` (corre os testes e o build antes de publicar).
+- O site vive numa subpasta, por isso o `vite.config.ts` usa `base: './'`. No código, os ficheiros de `public/` usam-se sempre com `assetUrl('caminho')` (de `data/asset-url.ts`), nunca com um caminho começado por `/`.
 
 ## Convenções
 
