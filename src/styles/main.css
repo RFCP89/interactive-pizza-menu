@@ -95,17 +95,29 @@ ul {
   padding-bottom: 1rem;
 }
 
+/* On phones the pizza and the total bar stay pinned to the top while the
+   ingredients scroll underneath, so there is always somewhere to drop. */
+.counter {
+  --stage-height: max(200px, 36svh);
+}
+
 .stage {
   grid-area: stage;
-  height: 45vh;
-  min-height: 260px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: var(--stage-height);
+  /* Same wood as the counter, so ingredients scrolling underneath are hidden. */
+  background-color: var(--wood);
+  background-image: inherit;
 }
 
 .bar {
   grid-area: bar;
   position: sticky;
-  bottom: 0;
-  z-index: 1;
+  top: var(--stage-height);
+  z-index: 2;
+  box-shadow: 0 6px 10px rgb(0 0 0 / 0.3);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -135,9 +147,18 @@ ul {
     scrollbar-color: rgb(255 248 236 / 0.4) transparent;
   }
 
+  /* Desktop fits on one screen, so nothing needs pinning. */
   .stage {
+    position: static;
     height: auto;
     min-height: 0;
+    background: none;
+    border-radius: 24px;
+  }
+
+  .bar {
+    position: static;
+    box-shadow: none;
   }
 }
 
@@ -345,6 +366,13 @@ ul {
 .bar-status {
   flex: 1;
   min-width: 0;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 1000px) {
+  .bar-status {
+    font-size: 1rem;
+  }
 }
 
 .bar-total {
@@ -397,7 +425,6 @@ ul {
 }
 
 .stage {
-  border-radius: 24px;
   transition: box-shadow 150ms ease;
 }
 
