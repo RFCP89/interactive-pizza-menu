@@ -5,6 +5,7 @@ import { createToppings } from './scene/toppings';
 import { createOrderStore, type Order, type OrderStore } from './state/order';
 import { connectAnnouncer } from './ui/announcer';
 import { renderSummary, renderTotal } from './ui/summary';
+import { enableDragToPizza } from './ui/drag';
 import { renderShelf } from './ui/tray';
 
 const store = createOrderStore();
@@ -15,6 +16,7 @@ renderShelf(requireElement('shelf-dough'), 'dough', store);
 renderShelf(requireElement('shelf-cheese'), 'cheese', store);
 renderSummary(requireElement('summary'), store);
 renderTotal(requireElement('bar-total'), store);
+enableDragToPizza(requireElement('counter'), requireElement('stage'), store);
 connectAnnouncer(requireElement('announcer'), store);
 startScene(requireElement('stage'), store);
 

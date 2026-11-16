@@ -43,6 +43,15 @@ export function applyItem(order: Order, kind: ShelfKind, id: string): Order {
   }
 }
 
+/** What happens when a tile is dropped on the pizza: it is always added, never taken off. */
+export function dropItem(order: Order, kind: ShelfKind, id: string): Order {
+  return kind === 'topping' ? addTopping(order, id) : applyItem(order, kind, id);
+}
+
+export function isShelfKind(value: string | undefined): value is ShelfKind {
+  return value !== undefined && value in shelves;
+}
+
 /** Fills `container` with one shelf of picture tiles. Each tile is a real <button>. */
 export function renderShelf(container: HTMLElement, kind: ShelfKind, store: OrderStore): void {
   const shelf = shelves[kind];
