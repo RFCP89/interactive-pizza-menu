@@ -47,6 +47,7 @@ src/
   ui/
     panel.ts           # lista de escolhas e botões
     summary.ts         # resumo do pedido e total
+    announcer.ts       # frases para a região aria-live (ex.: "Ingrediente adicionado: …")
     form.ts            # formulário final e confirmação
   styles/
     main.css

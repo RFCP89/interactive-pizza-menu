@@ -7,8 +7,17 @@
     <title>Monte a sua pizza</title>
   </head>
   <body>
-    <main id="app">
-      <h1>Monte a sua pizza</h1>
+    <main class="layout">
+      <header class="intro">
+        <h1>Monte a sua pizza</h1>
+        <p>Escolha a massa, o molho, o queijo e os ingredientes.</p>
+      </header>
+
+      <div id="choices" class="choices"></div>
+
+      <section id="summary" class="summary" aria-labelledby="summary-title"></section>
+
+      <p id="announcer" class="visually-hidden" aria-live="polite"></p>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
